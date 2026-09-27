@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <title>プレミアム用再生リスト</title>
+
+  <meta name="description"
+        content="百鬼夜鏡 プレミアム用再生リスト">
+
+  <!-- Xカード -->
+  <meta name="twitter:card"
+        content="summary_large_image">
+
+  <meta name="twitter:title"
+        content="プレミアム用再生リスト">
+
+  <meta name="twitter:description"
+        content="百鬼夜鏡 プレミアム用再生リスト">
+
+  <meta name="twitter:image"
+        content="/premium-thumbnail.jpg">
+
+  <!-- OGP -->
+  <meta property="og:title"
+        content="プレミアム用再生リスト">
+
+  <meta property="og:description"
+        content="百鬼夜鏡 プレミアム用再生リスト">
+
+  <meta property="og:image"
+        content="/premium-thumbnail.jpg">
+
+  <meta property="og:type"
+        content="website">
+
+  <!-- プレミアム用サイトへ移動 -->
+  <meta
+    http-equiv="refresh"
+    content="0;url=https://script.google.com/macros/s/AKfycbwe1FFsBW7ZIDQvdpwC75IE282Gh5MHlJF0FTwTfvuP7rxd4ID81b9Vhuk53b1Y3MBq/exec?page=list"
+  >
+
+</head>
+
+<body>
+
+  <p>
+    プレミアム用再生リストを開いています…
+  </p>
+
+  <script>
+    window.location.replace(
+      "https://script.google.com/macros/s/AKfycbwe1FFsBW7ZIDQvdpwC75IE282Gh5MHlJF0FTwTfvuP7rxd4ID81b9Vhuk53b1Y3MBq/exec?page=list"
+    );
+  </script>
+
+</body>
+</html>
