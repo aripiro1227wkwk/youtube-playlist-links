@@ -1,64 +1,1151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>X投稿テンプレート</title>
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --red:#d90020;
+      --pink:#fff1f3;
+      --black:#171717;
+      --gray:#f6f6f6;
+    }
 
-  <title>プレミアム用再生リスト</title>
+    * { box-sizing:border-box; }
 
-  <meta name="description"
-        content="百鬼夜鏡 プレミアム用再生リスト">
+    html {
+      scroll-behavior:smooth;
+    }
 
-  <!-- Xカード -->
-  <meta name="twitter:card"
-        content="summary_large_image">
+    body {
+      margin:0;
+      font-family:"Meiryo UI","Meiryo",sans-serif;
+      color:var(--black);
+      background:#fafafa;
+    }
 
-  <meta name="twitter:title"
-        content="プレミアム用再生リスト">
+    .wrap {
+      max-width:760px;
+      margin:auto;
+      padding:18px 14px 70px;
+    }
 
-  <meta name="twitter:description"
-        content="百鬼夜鏡 プレミアム用再生リスト">
+    header {
+      background:#fff;
+      border-bottom:4px solid var(--red);
+      padding:8px 0 18px;
+    }
 
-  <meta name="twitter:image"
-        content="https://youtube-playlist-links.vercel.app/premium-thumbnail.jpg">
+    h1 {
+      margin:0;
+      color:var(--red);
+      font-size:28px;
+    }
 
-  <!-- OGP -->
-  <meta property="og:type"
-        content="website">
+    .sub {
+      margin:7px 0 0;
+      font-size:13px;
+    }
 
-  <meta property="og:title"
-        content="プレミアム用再生リスト">
+    .nav {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin:16px 0;
+    }
 
-  <meta property="og:description"
-        content="百鬼夜鏡 プレミアム用再生リスト">
+    .nav a {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      text-decoration:none;
+      color:#111;
+      border:1.5px solid var(--red);
+      border-radius:12px;
+      background:#fff;
+      font-weight:700;
+      font-size:14px;
+      text-align:center;
+      padding:7px;
+    }
 
-  <meta property="og:url"
-        content="https://youtube-playlist-links.vercel.app/premium">
+    .nav a:hover {
+      background:var(--pink);
+    }
 
-  <meta property="og:image"
-        content="https://youtube-playlist-links.vercel.app/premium-thumbnail.jpg">
+    .card {
+      scroll-margin-top:10px;
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:16px;
+      margin:16px 0;
+      padding:15px;
+      box-shadow:0 3px 12px #0000000a;
+    }
 
-  <meta property="og:image:secure_url"
-        content="https://youtube-playlist-links.vercel.app/premium-thumbnail.jpg">
+    .card h2 {
+      font-size:20px;
+      margin:0 -15px 14px;
+      padding:10px 15px;
+      background:var(--pink);
+      border-left:5px solid var(--red);
+    }
 
-  <meta property="og:image:type"
-        content="image/jpeg">
+    label {
+      display:block;
+      font-weight:700;
+      font-size:13px;
+      margin:11px 0 5px;
+    }
 
+    input,
+    textarea {
+      width:100%;
+      border:1px solid #bbb;
+      border-radius:9px;
+      padding:11px;
+      font:inherit;
+      background:#fff;
+    }
+
+    textarea {
+      min-height:76px;
+      resize:vertical;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .preview {
+      white-space:pre-wrap;
+      background:var(--gray);
+      border-radius:10px;
+      padding:13px;
+      margin-top:13px;
+      font-size:14px;
+      line-height:1.65;
+      overflow-wrap:anywhere;
+    }
+
+    .actions {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    button,
+    .xbtn {
+      border:0;
+      border-radius:10px;
+      min-height:44px;
+      padding:9px 10px;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+      text-align:center;
+    }
+
+    .xbtn {
+      background:var(--red);
+      color:#fff;
+      grid-column:1/-1;
+    }
+
+    .copy {
+      background:#111;
+      color:#fff;
+    }
+
+    .clear {
+      background:#fff;
+      color:#111;
+      border:1px solid #aaa;
+    }
+
+    .note {
+      font-size:12px;
+      color:#666;
+      margin:7px 0;
+    }
+
+    .wide {
+      grid-column:1/-1;
+    }
+
+    .top-button {
+      width:100%;
+      background:var(--red);
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      min-height:50px;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+      margin-top:24px;
+    }
+
+    footer {
+      text-align:right;
+      font-size:11px;
+      color:#666;
+      margin-top:24px;
+    }
+
+    @media(max-width:430px) {
+      h1 { font-size:24px; }
+
+      .wrap {
+        padding-left:10px;
+        padding-right:10px;
+      }
+
+      .card {
+        padding:13px;
+      }
+
+      .card h2 {
+        margin-left:-13px;
+        margin-right:-13px;
+      }
+
+      .grid {
+        grid-template-columns:1fr;
+      }
+
+      .wide {
+        grid-column:auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <p>プレミアム用再生リストを開いています…</p>
+<header id="top">
+  <div class="wrap" style="padding-bottom:0">
+    <h1>X 投稿テンプレート</h1>
+    <p class="sub">
+      必要な項目を入力 → 完成文を確認 → Xで投稿 / コピー
+    </p>
 
-  <script>
-    setTimeout(function () {
-      window.location.replace(
-        "https://script.google.com/macros/s/AKfycbwe1FFsBW7ZIDQvdpwC75IE282Gh5MHlJF0FTwTfvuP7rxd4ID81b9Vhuk53b1Y3MBq/exec?page=list"
+    <nav class="nav" id="nav"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div id="cards"></div>
+
+  <button
+    type="button"
+    class="top-button"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    ↑ トップに戻る
+  </button>
+
+  <footer>
+    スマホ向けテンプレートツール
+  </footer>
+
+</main>
+
+<script>
+
+/* 開いたときに必ず一番上から表示 */
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+window.addEventListener("pageshow", () => {
+  if (location.hash) {
+    history.replaceState(
+      null,
+      "",
+      location.pathname + location.search
+    );
+  }
+
+  window.scrollTo(0,0);
+});
+
+
+/* 日付関係 */
+
+const pad = n =>
+  String(n).padStart(2,"0");
+
+const now = () =>
+  new Date();
+
+const ymd = (d,slashPad=true) =>
+  slashPad
+    ? `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`
+    : `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+
+const md = d =>
+  `${d.getMonth()+1}/${d.getDate()}`;
+
+const addDays = (d,n) => {
+  const x = new Date(d);
+  x.setDate(x.getDate()+n);
+  return x;
+};
+
+const tomorrow = () =>
+  ymd(addDays(now(),1));
+
+
+function nextWeek() {
+
+  const d = now();
+  const day = d.getDay();
+
+  const daysToMon =
+    day === 0 ? 1 : 8-day;
+
+  const mon =
+    addDays(d,daysToMon);
+
+  const sun =
+    addDays(mon,6);
+
+  return `${ymd(mon,false)}～${ymd(sun,false)}`;
+}
+
+
+function monthRange() {
+
+  const d = now();
+
+  const last =
+    new Date(
+      d.getFullYear(),
+      d.getMonth()+1,
+      0
+    );
+
+  return `${d.getFullYear()}/${d.getMonth()+1}/1～${d.getFullYear()}/${d.getMonth()+1}/${last.getDate()}`;
+}
+
+
+const H =
+`#元木湧
+#ジュニア`;
+
+
+
+/* =========================
+   テンプレート一覧
+   ========================= */
+
+const templates = [
+
+
+/* Instagram */
+
+{
+  id:"instagram",
+  title:"Instagram",
+
+  fields:[
+    ["url","URL","url"]
+  ],
+
+  build:v=>
+`${ymd(now())}
+
+【Instagram】
+
+ジュニア公式
+
+${H}
+
+${v.url||""}`
+},
+
+
+
+/* ブログ */
+
+{
+  id:"blog",
+  title:"ブログ",
+
+  fields:[
+    ["num","ブログ更新 #","text"],
+    ["url","URL","url"]
+  ],
+
+  build:v=>
+`${ymd(now())}
+
+【FAMILY CLUB web】
+
+ブログ更新　#${v.num||""}
+
+#元木湧
+#ジュニア
+#元木湧のブログ
+
+${v.url||""}`
+},
+
+
+
+/* TikTok */
+
+{
+  id:"tiktok",
+  title:"TikTok",
+
+  fields:[
+    ["url","URL","url"]
+  ],
+
+  build:v=>
+`${ymd(now())}
+
+【Tiktok】
+
+ジュニア公式
+
+${H}
+
+${v.url||""}`
+},
+
+
+
+/* TVer */
+
+{
+  id:"tver",
+  title:"TVer",
+
+  fields:[
+    ["limit","見逃し期限","text"],
+    ["url","URL","url"]
+  ],
+
+  build:v=>
+`${ymd(now())}
+
+【Tver】
+
+⚠️見逃し期限 ～${v.limit||"　"}まで
+
+${H}
+#Tver
+
+${v.url||""}`
+},
+
+
+
+/* Radiko */
+
+{
+  id:"radiko",
+  title:"Radiko",
+
+  fields:[
+    ["limit","無料プラン見逃し期限","text"],
+    ["url","URL","url"]
+  ],
+
+  build:v=>
+`${ymd(now())}
+
+【Radiko】
+
+⚠️無料プラン見逃し期限 ～${v.limit||"　"}まで
+
+${H}
+#Radiko
+
+${v.url||""}`
+},
+
+
+
+/* ジュニア情報局 */
+
+{
+  id:"fc",
+  title:"ジュニア情報局",
+
+  fields:[
+    ["limit","視聴期限","text"],
+    ["url","URL","url"]
+  ],
+
+  build:v=>
+`${ymd(now())}
+
+【ジュニア情報局】
+
+⚠️視聴期限　～${v.limit||"　"}まで
+
+${H}
+#ジュニア情報局
+
+${v.url||""}`
+},
+
+
+
+/* ハッシュタグ */
+
+{
+  id:"hashtags",
+  title:"ハッシュタグ",
+
+  fields:[],
+
+  build:v=>H
+},
+
+
+
+/* 翌日の予定① */
+
+{
+  id:"tomorrow1",
+  title:"翌日の予定①",
+
+  fields:[
+    ["plan","予定内容","textarea"]
+  ],
+
+  build:v=>
+`📢${tomorrow()}
+
+・${v.plan||"ブログ更新予定日"}
+
+${H}`
+},
+
+
+
+/* 翌日の予定② */
+
+{
+  id:"tomorrow2",
+  title:"翌日の予定②",
+
+  fields:[
+    ["plan","予定内容","textarea"]
+  ],
+
+  build:v=>
+`📢${tomorrow()}
+
+・${v.plan||""}
+
+${H}`
+},
+
+
+
+/* プレミアム用再生リスト */
+
+{
+  id:"premiumlist",
+  title:"📈プレミアム用再生リスト",
+
+  fields:[],
+
+  build:v=>
+`📈プレミアム用再生リスト
+
+${ymd(now(),false)}
+本日のプレミアム用再生リストです❣️
+
+https://youtube-playlist-links.vercel.app/premium?xcard=3
+
+#元木湧
+#ジュニア
+#百鬼夜鏡
+#元木湧リスト`
+},
+
+
+
+/* 全員用再生リスト */
+
+{
+  id:"alllist",
+  title:"📈全員用再生リスト",
+
+  fields:[],
+
+  build:v=>
+`📈全員用再生リスト
+
+${ymd(now(),false)}
+本日の全員用再生リストです❣️
+
+https://youtube-playlist-links.vercel.app/all?xcard=2
+
+#元木湧
+#ジュニア
+#百鬼夜鏡
+#元木湧リスト`
+},
+
+
+
+/* 百鬼夜鏡 YouTube再生数 */
+
+{
+  id:"youtube",
+  title:"百鬼夜鏡 YouTube再生数",
+
+  fields:[
+
+    ["views","再生数","text"],
+
+    ["viewsPlus",
+     "再生数 前日比",
+     "text"],
+
+    ["likes",
+     "高評価",
+     "text"],
+
+    ["likesPlus",
+     "高評価 前日比",
+     "text"],
+
+    ["goal",
+     "月内目標再生数",
+     "text"],
+
+    ["remain",
+     "あと○回",
+     "text"],
+
+    ["perday",
+     "1日あたり○回",
+     "text"]
+
+  ],
+
+  fixedUrl:
+  "https://youtu.be/DlvTFxY9g_o?si=eTr_Hb-vOpIk8e2E",
+
+  build:v=>
+`【Youtube】
+
+${md(now())} 24:00　　${v.views||"●●●"}回 　 ＋${v.viewsPlus||"●"}
+
+高評価 ${v.likes||"●●"} +${v.likesPlus||"●"}
+
+月内${v.goal||"●●"}回再生目指しましょう！
+
+あと${v.remain||"●●"}(1日あたり${v.perday||"●●"})
+
+再生数1位継続しましょう！
+
+お疲れ様でした👏
+
+明日も頑張りましょう💪
+
+#元木湧
+#ジュニア
+#百鬼夜鏡
+
+${v.url||""}`
+},
+
+
+
+/* 翌週の予定 */
+
+{
+  id:"nextweek",
+  title:"翌週の予定",
+
+  fields:[
+    ["plan","予定内容","textarea"]
+  ],
+
+  build:v=>
+`📢${nextWeek()}
+
+・${v.plan||"ブログ更新予定日(月)(水)(金)"}
+
+${H}`
+},
+
+
+
+/* 活動まとめ */
+
+{
+  id:"monthly",
+  title:"活動まとめ",
+
+  fields:[
+
+    ["stage",
+     "ステージ",
+     "text"],
+
+    ["info",
+     "情報局",
+     "text"],
+
+    ["blogPosts",
+     "ブログ 投稿回数",
+     "text"],
+
+    ["blogPhotos",
+     "ブログ 写真回数",
+     "text"],
+
+    ["instagram",
+     "Instagram投稿",
+     "text"],
+
+    ["stories",
+     "Instagramストーリーズ回数",
+     "text"],
+
+    ["tiktok",
+     "TikTok",
+     "text"],
+
+    ["youtube",
+     "YouTube",
+     "text"],
+
+    ["magazine",
+     "Magazine",
+     "text"],
+
+    ["radio",
+     "Radio",
+     "text"],
+
+    ["tv",
+     "TV",
+     "text"]
+
+  ],
+
+  build:v=>
+`${monthRange()}
+
+【活動まとめ】
+
+#元木湧 くん1ヶ月お疲れ様でした☆.*゜
+
+*ステージ→${v.stage||""}
+
+*情報局→${v.info||""}
+
+*元木湧のブログ→投稿 ${v.blogPosts||"〇"}回 写真 ${v.blogPhotos||"〇"}回(日付画像参照)
+
+*Instagram投稿→${v.instagram||""}
+
+*Instagramストーリーズ→${v.stories||"〇"}回(日付画像参照)
+
+*Tiktok→${v.tiktok||""}
+
+*Youtube→${v.youtube||""}
+
+*Magazine→${v.magazine||""}
+
+*Radio→${v.radio||""}
+
+*TV→${v.tv||""}
+
+#ジュニア`
+},
+
+
+
+/* おぷちゃ共有用 */
+
+{
+  id:"openchat",
+  title:"おぷちゃ共有用",
+
+  noX:true,
+
+  fields:[
+
+    ["views",
+     "元木くん 再生数",
+     "text"],
+
+    ["viewsPlus",
+     "昨日からの増加数",
+     "text"],
+
+    ["likes",
+     "元木くん 高評価",
+     "text"],
+
+    ["likesPlus",
+     "高評価 増加数",
+     "text"],
+
+    ["kviews",
+     "川﨑さん 再生数",
+     "text"],
+
+    ["kviewsPlus",
+     "川﨑さん 増加数",
+     "text"],
+
+    ["klikes",
+     "川﨑さん 高評価",
+     "text"],
+
+    ["klikesPlus",
+     "川﨑さん 高評価増加数",
+     "text"]
+
+  ],
+
+  build:v=>
+`今日も再生お疲れ様でした！
+${v.views||"●●"}回再生です👏
+昨日＋${v.viewsPlus||"●●"}
+高評価${v.likes||"●●"}　＋${v.likesPlus||"●●"}
+
+参考⬇️
+川﨑さん　${v.kviews||"●●"}回　＋${v.kviewsPlus||"●●"}
+高評価　${v.klikes||"●●"}＋${v.klikesPlus||"●●"}
+
+明日もわくとわく担がいい日になりますように♪`
+}
+
+];
+
+
+
+/* =========================
+   サイト動作
+   ========================= */
+
+
+function vals(t) {
+
+  const o = {};
+
+  t.fields.forEach(f=>{
+
+    const el =
+      document.querySelector(
+        `#${t.id}-${f[0]}`
       );
-    }, 300);
-  </script>
+
+    o[f[0]] =
+      el
+        ? el.value.trim()
+        : "";
+
+  });
+
+  if(t.fixedUrl) {
+    o.url=t.fixedUrl;
+  }
+
+  return o;
+}
+
+
+
+function update(t) {
+
+  document.querySelector(
+    `#p-${t.id}`
+  ).textContent =
+    t.build(vals(t));
+
+}
+
+
+
+function copyText(t) {
+
+  const text =
+    t.build(vals(t));
+
+  navigator.clipboard
+    .writeText(text)
+    .then(()=>{
+
+      const b =
+        document.querySelector(
+          `#c-${t.id}`
+        );
+
+      const old =
+        b.textContent;
+
+      b.textContent =
+        "コピーしました ✓";
+
+      setTimeout(
+        ()=>b.textContent=old,
+        1200
+      );
+
+    });
+
+}
+
+
+
+function clearFields(t) {
+
+  t.fields.forEach(f=>{
+
+    document.querySelector(
+      `#${t.id}-${f[0]}`
+    ).value="";
+
+  });
+
+  update(t);
+}
+
+
+
+function postX(t) {
+
+  const text =
+    t.build(vals(t));
+
+  window.open(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+
+}
+
+
+
+function fieldHTML(t,f) {
+
+  const [key,label,type] = f;
+
+  const id =
+    `${t.id}-${key}`;
+
+  if(type==="textarea") {
+
+    return `
+      <div class="wide">
+
+        <label for="${id}">
+          ${label}
+        </label>
+
+        <textarea
+          id="${id}"
+          placeholder="${label}を入力">
+        </textarea>
+
+      </div>
+    `;
+
+  }
+
+  return `
+    <div>
+
+      <label for="${id}">
+        ${label}
+      </label>
+
+      <input
+        id="${id}"
+        type="${type==="url"?"url":"text"}"
+        placeholder="${label}を入力">
+
+    </div>
+  `;
+
+}
+
+
+
+const nav =
+  document.querySelector("#nav");
+
+const cards =
+  document.querySelector("#cards");
+
+
+
+templates.forEach(t=>{
+
+
+  /* 上部のジャンプボタン */
+
+  nav.insertAdjacentHTML(
+    "beforeend",
+    `<a href="#${t.id}">
+      ${t.title}
+    </a>`
+  );
+
+
+
+  /* 各テンプレート */
+
+  cards.insertAdjacentHTML(
+    "beforeend",
+
+    `<section
+       class="card"
+       id="${t.id}">
+
+      <h2>
+        ${t.title}
+      </h2>
+
+      <div class="grid">
+        ${t.fields
+          .map(f=>fieldHTML(t,f))
+          .join("")}
+      </div>
+
+      ${
+        t.fixedUrl
+        ?
+        `<p class="note">
+          YouTube URLはテンプレートに固定済みです。
+        </p>`
+        :
+        ""
+      }
+
+      <div
+        class="preview"
+        id="p-${t.id}">
+      </div>
+
+      <div class="actions">
+
+        ${
+          t.noX
+          ?
+          ""
+          :
+          `<button
+             class="xbtn"
+             id="x-${t.id}">
+             Xで投稿
+           </button>`
+        }
+
+        <button
+          class="copy"
+          id="c-${t.id}">
+          全文コピー
+        </button>
+
+        <button
+          class="clear"
+          id="d-${t.id}">
+          入力内容を消す
+        </button>
+
+      </div>
+
+    </section>`
+  );
+
+
+
+  /* 入力したら即反映 */
+
+  t.fields.forEach(f=>{
+
+    document
+      .querySelector(
+        `#${t.id}-${f[0]}`
+      )
+      .addEventListener(
+        "input",
+        ()=>update(t)
+      );
+
+  });
+
+
+
+  /* コピーボタン */
+
+  document
+    .querySelector(
+      `#c-${t.id}`
+    )
+    .onclick =
+      ()=>copyText(t);
+
+
+
+  /* 消去ボタン */
+
+  document
+    .querySelector(
+      `#d-${t.id}`
+    )
+    .onclick =
+      ()=>clearFields(t);
+
+
+
+  /* X投稿 */
+
+  if(!t.noX) {
+
+    document
+      .querySelector(
+        `#x-${t.id}`
+      )
+      .onclick =
+        ()=>postX(t);
+
+  }
+
+
+
+  /* 初期表示 */
+
+  update(t);
+
+});
+
+
+/* 念のため読み込み完了後もトップへ */
+
+window.addEventListener(
+  "load",
+  ()=>{
+    setTimeout(
+      ()=>window.scrollTo(0,0),
+      0
+    );
+  }
+);
+
+</script>
 
 </body>
 </html>
