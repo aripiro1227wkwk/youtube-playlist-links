@@ -11,7 +11,7 @@
   <meta name="description"
         content="百鬼夜鏡 全員用再生リスト">
 
-  <!-- Xカード -->
+  <!-- X -->
   <meta name="twitter:card"
         content="summary_large_image">
 
@@ -25,13 +25,22 @@
         content="https://youtube-playlist-links.vercel.app/all-thumbnail.jpg">
 
   <!-- OGP -->
+  <meta property="og:type"
+        content="website">
+
   <meta property="og:title"
         content="全員用再生リスト">
 
   <meta property="og:description"
         content="百鬼夜鏡 全員用再生リスト">
 
+  <meta property="og:url"
+        content="https://youtube-playlist-links.vercel.app/all">
+
   <meta property="og:image"
+        content="https://youtube-playlist-links.vercel.app/all-thumbnail.jpg">
+
+  <meta property="og:image:secure_url"
         content="https://youtube-playlist-links.vercel.app/all-thumbnail.jpg">
 
   <meta property="og:image:type"
@@ -43,30 +52,18 @@
   <meta property="og:image:height"
         content="928">
 
-  <meta property="og:type"
-        content="website">
-
-  <meta property="og:url"
-        content="https://youtube-playlist-links.vercel.app/all">
-
-  <!-- 全員用サイトへ移動 -->
-  <meta
-    http-equiv="refresh"
-    content="0;url=https://script.google.com/macros/s/AKfycbx6kSxmpEKIMTgmID72EXiqbnQaExAO2ZxcIQpYjDcA6EoQR1sc-iv_BfHnjOAxw5YS/exec?page=list"
-  >
-
 </head>
 
 <body>
 
-  <p>
-    全員用再生リストを開いています…
-  </p>
+  <p>全員用再生リストを開いています…</p>
 
   <script>
-    window.location.replace(
-      "https://script.google.com/macros/s/AKfycbx6kSxmpEKIMTgmID72EXiqbnQaExAO2ZxcIQpYjDcA6EoQR1sc-iv_BfHnjOAxw5YS/exec?page=list"
-    );
+    setTimeout(function () {
+      window.location.replace(
+        "https://script.google.com/macros/s/AKfycbx6kSxmpEKIMTgmID72EXiqbnQaExAO2ZxcIQpYjDcA6EoQR1sc-iv_BfHnjOAxw5YS/exec?page=list"
+      );
+    }, 300);
   </script>
 
 </body>
