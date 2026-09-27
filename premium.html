@@ -22,39 +22,42 @@
         content="百鬼夜鏡 プレミアム用再生リスト">
 
   <meta name="twitter:image"
-        content="/premium-thumbnail.jpg">
+        content="https://youtube-playlist-links.vercel.app/premium-thumbnail.jpg">
 
   <!-- OGP -->
+  <meta property="og:type"
+        content="website">
+
   <meta property="og:title"
         content="プレミアム用再生リスト">
 
   <meta property="og:description"
         content="百鬼夜鏡 プレミアム用再生リスト">
 
+  <meta property="og:url"
+        content="https://youtube-playlist-links.vercel.app/premium">
+
   <meta property="og:image"
-        content="/premium-thumbnail.jpg">
+        content="https://youtube-playlist-links.vercel.app/premium-thumbnail.jpg">
 
-  <meta property="og:type"
-        content="website">
+  <meta property="og:image:secure_url"
+        content="https://youtube-playlist-links.vercel.app/premium-thumbnail.jpg">
 
-  <!-- プレミアム用サイトへ移動 -->
-  <meta
-    http-equiv="refresh"
-    content="0;url=https://script.google.com/macros/s/AKfycbwe1FFsBW7ZIDQvdpwC75IE282Gh5MHlJF0FTwTfvuP7rxd4ID81b9Vhuk53b1Y3MBq/exec?page=list"
-  >
+  <meta property="og:image:type"
+        content="image/jpeg">
 
 </head>
 
 <body>
 
-  <p>
-    プレミアム用再生リストを開いています…
-  </p>
+  <p>プレミアム用再生リストを開いています…</p>
 
   <script>
-    window.location.replace(
-      "https://script.google.com/macros/s/AKfycbwe1FFsBW7ZIDQvdpwC75IE282Gh5MHlJF0FTwTfvuP7rxd4ID81b9Vhuk53b1Y3MBq/exec?page=list"
-    );
+    setTimeout(function () {
+      window.location.replace(
+        "https://script.google.com/macros/s/AKfycbwe1FFsBW7ZIDQvdpwC75IE282Gh5MHlJF0FTwTfvuP7rxd4ID81b9Vhuk53b1Y3MBq/exec?page=list"
+      );
+    }, 300);
   </script>
 
 </body>
