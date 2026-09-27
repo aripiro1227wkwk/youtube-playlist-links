@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/all",
+      "destination": "/all.html"
+    },
+    {
+      "source": "/premium",
+      "destination": "/premium.html"
+    }
+  ]
+}
